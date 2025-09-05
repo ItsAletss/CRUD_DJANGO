@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROYECTO CRUD</title>
+</head>
+<body>
+    <h1>GESTOR DE TAREAS</h1>
+<!-- aqui agrego mi proyecto CRUD que es 
+para crear, leer, actualizar y eliminar tareas -->
+    <form action="" method="post">
+        {% csrf_token %} <!-- Token de seguridad para evitar ataques CSRF ( (Cross-Site Request Forgery)) -->
+        {{ form.as_p }}  <!-- Renderiza el formulario como párrafos -->
+        <button type="submit">Crear Tarea</button>
+    </form>
+
+    <h2>Tareas completas</h2>
+<!-- codigo python para mostrar las tareas -->
+    <!-- Verifica si hay tareas y las muestra -->
+    {% if tasks %}
+        <p>Tienes {{ tasks|length }} tarea(s).</p>
+    {% else %}
+        <p>No tienes tareas.</p>
+    {% endif %}
+
+    
+    <h2>Tareas pendientes</h2>
+    <!--Itera sobre las tareas y las muestra -->
+    <ul>
+        {% for task in pending_task %}
+            <li>
+                <strong>{{ task.title }}</strong>: {{ task.description }}
+                <!-- Aquí podrías agregar enlaces para editar o eliminar tareas -->
+            </li>
+        {% empty %}
+            <li>Tareas pendientes.</li>
+        {% endfor %}
+    </ul>      
+    
+    
+    <h2>Tareas completas</h2>
+    
+    
+    {% for task in task_completed %}
+            <li>
+                <strong>{{ task.title }}</strong>: {{ task.description }}
+                <!-- Aquí podrías agregar enlaces para editar o eliminar tareas -->
+            </li>
+        {% empty %}
+            <li>Felicidades, ya terminaste estas tareas: </li>
+        {% endfor %}
+
+
+
+</body>
+</html>

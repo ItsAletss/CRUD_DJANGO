@@ -1,0 +1,21 @@
+# Entorno virtual
+venv/
+.env/
+env/
+
+# Base de datos (¡No subas tu db.sqlite3!)
+*.sqlite3
+*.db
+
+# Archivos de Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos de desarrollo (IDE)
+.vscode/
+.idea/
+.DS_Store
+
+# Archivos estáticos recogidos (si los tienes)
+staticfiles/
